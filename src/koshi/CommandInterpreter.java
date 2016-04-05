@@ -7,7 +7,7 @@ package koshi;
 
 /**
  *
- * @author jjerc
+ * @author Mauricio
  */
 public class CommandInterpreter {
     
