@@ -7,7 +7,7 @@ package koshi;
 
 /**
  *
- * @author jjerc
+ * @author Alvaro
  */
 public class Renderer {
     
