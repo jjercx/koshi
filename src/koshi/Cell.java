@@ -7,7 +7,7 @@ package koshi;
 
 /**
  *
- * @author jjerc
+ * @author Juan José Ramírez Calderón
  */
 public class Cell {
     
