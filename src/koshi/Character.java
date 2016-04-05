@@ -7,7 +7,7 @@ package koshi;
 
 /**
  *
- * @author jjerc
+ * @author Alexandra Espichán Linares
  */
 public class Character {
     
