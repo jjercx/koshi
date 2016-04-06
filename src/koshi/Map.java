@@ -155,5 +155,10 @@ public class Map {
     public void setCommandD(String commandD) {
         this.commandD = commandD;
     }
+    
+    public Cell getCellAt(int i, int j){
+        Cell cell = matrix[i][j];
+        return cell;
+    }
 
 }
