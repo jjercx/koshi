@@ -75,6 +75,28 @@ public class Renderer{
     
         
     public static void draw_map(Map map, MainCharacter koshi, MainCharacter monkey){
+        Cell [][]mapAct = map.getMatrix();
+        
+        Position pK = koshi.getPos();
+        Position pM = monkey.getPos();
+        int i,j;
+        
+        //print all the lines of the map load before
+        for(i=0;i<Game.WIDTH;i++){
+            j=0;
+            for(j=0;j<Game.HEIGHT;j++){
+                if(pK.getX()==i && pK.getY()==j){
+                    char car = koshi.sprite;
+                    System.out.print(car);
+                }else if(pM.getX()==i && pM.getY()==j){
+                    char car = monkey.sprite;
+                }
+                else{
+                    System.out.println(mapAct[i][j].getSprite());
+                }                
+            }
+            System.out.println("");
+        }
         
     }
     
