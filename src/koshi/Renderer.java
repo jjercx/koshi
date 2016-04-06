@@ -86,13 +86,14 @@ public class Renderer{
         int i,j;
         
         if(Game.LEVEL == 0){
-            System.out.println("  Vida Restante de los jugadores: "+ koshi.getHealth());
+            
             System.out.println(" Usa las teclas WASD para mover a Koshi y las teclas JKLI para mover al Mono.");
             System.out.println("  Si ves un lugar marcado con las letras C o D (Mayusculas) ¡Parate sobre el! Podrás realizar acciones especiales.");
             System.out.println("  Sólo podrás pasar los niveles con la ayuda de las acciones especiales. Para esto, tendrás que presionar comandos que se mostrarán en un cuadro de diálogo como éste.");
             System.out.println("  Presionar botones que no pertenezcan a una secuencia de comandos reducirá puntos de vida.");
             System.out.println("  Para activar los terrenos D, tienen que estar sobre ellos Koshi y el Mono al mismo tiempo, en los C sólo con un personaje sobre ellos basta.");
             System.out.println("");
+            System.out.println("  Vida Restante de los jugadores: "+ koshi.getHealth());
             for(i=0;i<Game.HEIGHT;i++){
                 j=0;
                 for(j=0;j<Game.WIDTH;j++){
@@ -114,14 +115,21 @@ public class Renderer{
                     
             }
         }else if(Game.LEVEL == 1){
-            for(i=0;i<Game.WIDTH;i++){
+            
+            System.out.println("Cuando aparece un enemigo, este te bajará puntos de vida. Si tus puntos de vida llegan a 0, se acabará el juego.");
+            System.out.println("o	Los puntos de vida son los números en la parte superior de la pantalla. Estos son compartidos entre Koshi y el Mono.");
+            System.out.println("o	Si un enemigo afecta a un personaje, este no se podrá mover. Tendrás que usar a su amigo para ayudarlo.");
+            System.out.println("");
+            System.out.println(" Vida Restante de los jugadores: "+ koshi.getHealth());   
+                
+            for(i=0;i<Game.HEIGHT;i++){
                 j=0;
-                for(j=0;j<Game.HEIGHT;j++){
+                for(j=0;j<Game.WIDTH;j++){
 
-                    if(pK.getX()==i && pK.getY()==j){
+                    if(pK.getY()==i && pK.getX()==j){
                         char car = koshi.sprite;
                         System.out.print(car);
-                    }else if(pM.getX()==i && pM.getY()==j){
+                    }else if(pM.getY()==i && pM.getX()==j){
                         char car = monkey.sprite;
                         System.out.print(car);
                     }
@@ -129,31 +137,25 @@ public class Renderer{
                         System.out.print(mapAct[i][j].getSprite());
                     }
 
-                }                
-                j++;
-                j++;
-                
-                if(i==2){
-                    //print the life
-                    
-                    System.out.println(" Vida Restante de los jugadores: "+ koshi.getHeight());   
                 }
-                if(i==5) System.out.println("Cuando aparece un enemigo, este te bajará puntos de vida. Si tus puntos de vida llegan a 0, se acabará el juego.");
-                if(i==7) System.out.println("o	Los puntos de vida son los números en la parte superior de la pantalla. Estos son compartidos entre Koshi y el Mono.");
-                if(i==9) System.out.println("o	Si un enemigo afecta a un personaje, este no se podrá mover. Tendrás que usar a su amigo para ayudarlo.");
-                if(i==15)System.out.println("");
+                
+            System.out.println();                                       
+                
             }
         
         
         }else if(Game.LEVEL == 2){
-            for(i=0;i<Game.WIDTH;i++){
+            System.out.println("");
+            System.out.println(" Vida Restante de los jugadores: "+ koshi.getHeight());   
+                
+            for(i=0;i<Game.HEIGHT;i++){
                 j=0;
-                for(j=0;j<Game.HEIGHT;j++){
+                for(j=0;j<Game.WIDTH;j++){
 
-                    if(pK.getX()==i && pK.getY()==j){
+                    if(pK.getY()==i && pK.getX()==j){
                         char car = koshi.sprite;
                         System.out.print(car);
-                    }else if(pM.getX()==i && pM.getY()==j){
+                    }else if(pM.getY()==i && pM.getX()==j){
                         char car = monkey.sprite;
                         System.out.print(car);
                     }
@@ -162,27 +164,23 @@ public class Renderer{
                     }
 
                 }               
-                j++;
-                j++;
                 
-                if(i==2){
-                    //print the life
-                    
-                    System.out.println(" Vida Restante de los jugadores: "+ koshi.getHeight());   
-                }
+                System.out.println("");
                 
-                if(i==15)System.out.println("");
             }
             
         }else if(Game.LEVEL == 3){
-            for(i=0;i<Game.WIDTH;i++){
+            System.out.println("");
+            System.out.println(" Vida Restante de los jugadores: "+ koshi.getHeight());   
+                
+            for(i=0;i<Game.HEIGHT;i++){
                 j=0;
-                for(j=0;j<Game.HEIGHT;j++){
+                for(j=0;j<Game.WIDTH;j++){
                     
-                    if(pK.getX()==i && pK.getY()==j){
+                    if(pK.getY()==i && pK.getX()==j){
                         char car = koshi.sprite;
                         System.out.print(car);
-                    }else if(pM.getX()==i && pM.getY()==j){
+                    }else if(pM.getY()==i && pM.getX()==j){
                         char car = monkey.sprite;
                         System.out.print(car);
                     }
@@ -190,18 +188,10 @@ public class Renderer{
                         System.out.print(mapAct[i][j].getSprite());
                     }
 
-                }
+                }  
+                 
                 
-                j++;
-                j++;
-                
-                if(i==2){
-                    //print the life
-                    
-                    System.out.println(" Vida Restante de los jugadores: "+ koshi.getHeight());   
-                }
-                
-                if(i==15) System.out.println("");
+                System.out.println("");
             }
         }    
     }
