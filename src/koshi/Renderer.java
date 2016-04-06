@@ -76,7 +76,7 @@ public class Renderer{
         
     public static void draw_map(Map map, MainCharacter koshi, MainCharacter monkey){
         //clean buffer
-        for (int i = 0; i < 50; ++i) System.out.println();
+        //for (int i = 0; i < 50; ++i) System.out.println();
         //
         
         Cell [][]mapAct = map.getMatrix();
@@ -193,7 +193,7 @@ public class Renderer{
                 
                 System.out.println("");
             }
-        }    
+        }
     }
         
     

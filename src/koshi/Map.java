@@ -34,9 +34,11 @@ public class Map {
     
     private void check_enemies(MainCharacter A){
         Position pos = A.getPos();
-        Cell cell = matrix[pos.getY()][pos.getX()+1];
-        if (cell.getType().equals("enemy") && cell.isActive()) {
-            MainCharacter.setHealth(MainCharacter.getHealth()-1);        
+        if (pos.getX()+1 < Game.WIDTH){
+            Cell cell = matrix[pos.getY()][pos.getX()+1];
+            if (cell.getType().equals("enemy") && cell.isActive()) {
+                MainCharacter.setHealth(MainCharacter.getHealth()-1);        
+            }
         }
     }
     
@@ -64,6 +66,7 @@ public class Map {
         if(type.equals("normal") || type.equals("final")) return "movement";
         if(type.equals("action")) return "action";
         if(type.equals("duo")) return "duo";
+        return "";
     }
     
     private boolean check_victory(MainCharacter A){

@@ -7,7 +7,7 @@ package koshi;
 public class Cell {
     
     private Position pos;
-    private Position next[];
+    private Position next;
     private Position enemies[];
     
     private boolean walkable;
@@ -37,19 +37,6 @@ public class Cell {
         this.pos = pos;
     }
 
-    /**
-     * @return the next
-     */
-    public Position[] getNext() {
-        return next;
-    }
-
-    /**
-     * @param next the next to set
-     */
-    public void setNext(Position[] next) {
-        this.next = next;
-    }
 
     /**
      * @return the walkable
@@ -136,18 +123,18 @@ public class Cell {
     }
 
     /**
-     * @return the final_condition
+     * @return the next
      */
-    public boolean isFinal_condition() {
-        return final_condition;
+    public Position getNext() {
+        return next;
     }
 
     /**
-     * @param final_condition the final_condition to set
+     * @param next the next to set
      */
-    public void setFinal_condition(boolean final_condition) {
-        this.final_condition = final_condition;
+    public void setNext(Position next) {
+        this.next = next;
     }
-    
+
     
 }
