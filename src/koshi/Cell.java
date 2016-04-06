@@ -8,10 +8,12 @@ public class Cell {
     
     private Position pos;
     private Position next[];
+    private Position enemies[];
     
     private boolean walkable;
-    private String type; //trigger, action, duo, normal
-    private char sprite; 
+    private String type; //trigger, action, duo, normal, enemy
+    private boolean active;
+    private char sprite;
 
     public Cell(boolean walkable, String type, char sprite, int i, int j) {
         this.walkable = walkable;
