@@ -4,45 +4,91 @@
  * and open the template in the editor.
  */
 package koshi;
-import java.util.Scanner;
 /**
  *
  * @author Mauricio
  */
 public class CommandInterpreter {
     
-    
-
-    public void CommandInterpreter(){
-        
-    }
-    
-    
-    
-    
-    public int verifyMainMenuInput(int op){
-        /*This method takes the main menu's option and verify it
-          to do an specific event.*/
-        while(true){
-            //When the player chose this option, the game its supposed to start.
-            if (op == 1) break;
-            else if (op == 2) System.exit(0);
-            else {
-                /*When the CI detects an unknown character, it will request to the player
-                  to retype the option character.*/
-                System.out.println("Por favor ingrese una opción válida.\n");
+    public static void execute(String command, MainCharacter koshi, MainCharacter monkey, Map m){
+        if (koshi.getStatus().equals("movement")){//Koshi is A
+            if (command.equals("w") || command.equals("W")){
+                koshi.goUp();
+            }else if (command.equals("a") || command.equals("A")){
+                koshi.goLeft();
+            }else if (command.equals("s") || command.equals("S")){
+                koshi.goDown();
+            }else if (command.equals("d") || command.equals("D")){
+                koshi.goRight();
             }
-        }        
-        return 1;
-    }
-    public int verifyInputKey(String command, int type){
-        if (command.equals("ESC")) System.exit(0);
-        if (type == 0){
-            /*This means that we're refering at player's movement*/
-            
+        }else if (koshi.getStatus().equals("action")){
+            String secuency = m.getCommandA();
+            String monkeyMovementKeys = "IJKL";
+            int index = 0;
+            if (secuency.charAt(index) == command.charAt(0)){
+                index++;
+                if (index == secuency.length()){
+                    //Change the cell state from action to normal or movement
+                    //because the action event has finished successfully
+                    int x = koshi.getPos().getX();
+                    int y = koshi.getPos().getY();
+                    m.getMatrix()[x][y].setType("normal");
+                }
+            }else if (!monkeyMovementKeys.contains(command)){
+                //If the player press a wrong key, your health decreases by two
+                MainCharacter.setHealth(MainCharacter.getHealth()-2);
+            }
         }
-        return 0;
-
+        if (monkey.getStatus().equals("movement")){//Monkey is B
+            if (command.equals("i") || command.equals("I")){
+                monkey.goUp();
+            }else if (command.equals("j") || command.equals("J")){
+                monkey.goLeft();
+            }else if (command.equals("k") || command.equals("K")){
+                monkey.goDown();
+            }else if (command.equals("l") || command.equals("L")){
+                koshi.goRight();
+            }
+        }else if (monkey.getStatus().equals("action")){
+            String secuency = m.getCommandB();
+            String koshiMovementKeys = "WASD";
+            int index = 0;
+            if (secuency.charAt(index) == command.charAt(0)){
+                index++;
+                if (index == secuency.length()){
+                    //Change the cell state from action to normal or movement
+                    //because the action event has finished successfully
+                    int x = monkey.getPos().getX();
+                    int y = monkey.getPos().getY();
+                    m.getMatrix()[x][y].setType("normal");
+                }
+            }else if (!koshiMovementKeys.contains(command)){
+                //If the player press a wrong key, your health decreases by two
+                MainCharacter.setHealth(MainCharacter.getHealth()-2);
+            }
+        }
+        if (koshi.getStatus().equals("duo") && monkey.getStatus().equals("duo")){
+            String secuency = m.getCommandD();
+            int index = 0;
+            if (secuency.charAt(index) == command.charAt(0)){
+                index++;
+                if (index == secuency.length()){
+                    //Change the cell state from action to normal or movement
+                    //because the action event has finished successfully
+                    int xKoshi = koshi.getPos().getX();
+                    int yKoshi = koshi.getPos().getY();
+                    m.getMatrix()[xKoshi][yKoshi].setType("normal");
+                    
+                    int xMonkey = monkey.getPos().getX();
+                    int yMonkey = monkey.getPos().getY();
+                    m.getMatrix()[xMonkey][yMonkey].setType("normal");
+                }
+            }else{
+                //If the player press a wrong key, your health decreases by two
+                MainCharacter.setHealth(MainCharacter.getHealth()-2);
+            }
+        }
     }
+    
     
 }
