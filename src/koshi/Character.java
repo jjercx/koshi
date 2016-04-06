@@ -10,47 +10,17 @@ package koshi;
  * @author Alexandra Espichán Linares
  */
 public class Character {
-    protected int x;
-    protected int y;
+    protected Position pos;
     protected int height;
     protected int weight;
     protected char sprite;
 
-    public Character(int x, int y, int height, int weight, char sprite){
-        this.x = x;
-        this.y = y;
+    public Character(Position pos, int height, int weight, char sprite){
+        this.pos = pos;
         this.height = height;
         this.weight = weight;
         this.sprite = sprite;
-    }
-    
-    /**
-     * @return the x
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * @param x the x to set
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
-     * @return the y
-     */
-    public int getY() {
-        return y;
-    }
-
-    /**
-     * @param y the y to set
-     */
-    public void setY(int y) {
-        this.y = y;
-    }
+    }  
 
     /**
      * @return the height
@@ -92,6 +62,25 @@ public class Character {
      */
     public void setSprite(char sprite) {
         this.sprite = sprite;
+    }
+
+    /**
+     * @return the pos
+     */
+    public Position getPos() {
+        return pos;
+    }
+
+    /**
+     * @param pos the pos to set
+     */
+    public void setPos(Position pos) {
+        this.pos = pos;
+    }
+    
+    public void setPos(int x, int y) {
+        this.pos.setX(x);
+        this.pos.setY(y);
     }
     
     
