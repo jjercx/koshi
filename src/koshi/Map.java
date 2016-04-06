@@ -19,7 +19,51 @@ public class Map {
         this.height = height;
         matrix = new Cell[width][height];
     }
-
+    
+    public String update(MainCharacter A, MainCharacter B){
+        
+        check_triggers(A);
+        check_triggers(B);
+        if (check_victory(A) && check_victory(B)){
+            return "win";
+        }
+        check_enemies(A);
+        check_enemies(B);
+        return "";
+    }
+    
+    private void check_enemies(MainCharacter A){
+        Position pos = A.getPos();
+        Cell cell = matrix[pos.getY()][pos.getX()+1];
+        if (cell.getType().equals("enemy") && cell.isActive()) {
+            MainCharacter.setHealth(MainCharacter.getHealth()-1);        
+        }
+    }
+    
+    private void check_triggers(MainCharacter A){
+        //checar para triggers
+        Position pos = A.getPos();
+        Cell cell = matrix[pos.getY()][pos.getX()];
+        if (cell.getType().equals("trigger") && cell.isActive()){
+            cell.setActive(false);
+            Position enemies_pos[] = cell.getEnemies();
+            for (int i=0; i<enemies_pos.length; i++){
+                int enemy_x = enemies_pos[i].getX();
+                int enemy_y = enemies_pos[i].getY();
+                Cell enemy_cell = matrix[enemy_x][enemy_y];
+                if (!enemy_cell.isDead()){
+                    enemy_cell.setActive(true);
+                    enemy_cell.setDead(true);
+                }
+            }
+        }
+    }
+    
+    private boolean check_victory(MainCharacter A){
+        Position pos = A.getPos();
+        Cell cell = matrix[pos.getY()][pos.getX()];
+        return cell.getType().equals("final");
+    }
     
     /**
      * @return the width
