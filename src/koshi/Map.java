@@ -58,6 +58,13 @@ public class Map {
             }
         }
     }
+    public String getStatus(Position pos){
+        String type = matrix[pos.getY()][pos.getX()].getType();
+        if (type.equals("trigger")) return "trigger";
+        if(type.equals("normal") || type.equals("final")) return "movement";
+        if(type.equals("action")) return "action";
+        if(type.equals("duo")) return "duo";
+    }
     
     private boolean check_victory(MainCharacter A){
         Position pos = A.getPos();
