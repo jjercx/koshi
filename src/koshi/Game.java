@@ -23,7 +23,7 @@ public class Game {
         
         
         
-//        Map map = new Map(HEIGHT, WIDTH);   //load the map
+        Map map = new Map(HEIGHT, WIDTH);   //load the map
         Position pK = new Position(0,0);
         Position pM = new Position(0,0);
         
@@ -38,8 +38,8 @@ public class Game {
                 Renderer.draw_history(LEVEL);
 //                map = MapManager.fill_map(LEVEL);
                 
-                koshi.setPos(0,7);
-                monkey.setPos(0,0);                              
+                koshi.setPos(0,7); //hard-code
+                monkey.setPos(0,0);  //hard-code                            
                                 
                 while (true){
 //                    Renderer.draw_map(map, koshi, monkey);
@@ -49,7 +49,9 @@ public class Game {
 //                    koshi.setStatus(map.getStatus(posK));
 //                    monkey.setStatus(map.getStatus(posM));
 //                    CommandInterpreter.execute(command, koshi, monkey);
-
+//                    map.update(koshi);
+//                    map.update(monkey);
+                        
                       //It is logic from the map
 //                    if (victory()){
 //                       Renderer.draw_map(map, koshi, monkey);
