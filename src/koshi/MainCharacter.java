@@ -7,14 +7,16 @@ package koshi;
 
 /**
  *
- * @author SAMSUNG
+ * @author Alexandra Espichan Linares
  */
 
 public class MainCharacter extends Character {
-    private static int health = 10;    
+    private static int health = 10; 
+    private String status;
     
-    public MainCharacter(int x, int y, int height, int weight, char sprite){
-        super(x,y,height,weight,sprite);        
+    public MainCharacter(Position pos, int height, int weight, char sprite){
+        super(pos,height,weight,sprite);  
+        this.status = "movement";
     }
     
     /**
@@ -32,22 +34,37 @@ public class MainCharacter extends Character {
     }
     
     public void goUp(){
-        this.y -= 1;
+        this.pos.setY(this.pos.getY()-1);
     }
     
     public void goDown(){
-        this.y += 1;
+        this.pos.setY(this.pos.getY()+1);
     }
     
     public void goLeft(){
-        this.x -= 1;
+        this.pos.setX(this.pos.getX()-1);
     }
     
     public void goRight(){
-        this.x += 1;
+        this.pos.setX(this.pos.getX()+1);
     }
     
     public void decreaseHealth(int amount){
         this.health -= amount;
     }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
