@@ -49,11 +49,10 @@ public class Game {
 //                    koshi.setStatus(map.getStatus(posK));
 //                    monkey.setStatus(map.getStatus(posM));
 //                    CommandInterpreter.execute(command, koshi, monkey);
-//                    map.update(koshi);
-//                    map.update(monkey);
+//                    String condition = map.update(koshi,monkey);
                         
                       //It is logic from the map
-//                    if (victory()){
+//                    if (conditio.equals("win")){
 //                       Renderer.draw_map(map, koshi, monkey);
 //                       Renderer.draw_screen("next-level");//sale del bucle
 //                       break;
@@ -74,5 +73,7 @@ public class Game {
             }
         }
     }
-        
+    private boolean lose(){
+        return MainCharacter.getHealth() <= 0;
+    }    
 }
